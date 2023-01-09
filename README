@@ -1,20 +1,20 @@
-A évaluer sur ANDROID
-premier rendu :
-style de l'application { react navigation header et bottom header }
-liste des exercices {axios}
-consulter un exercice {axios}
-Mensuration, calcul IMC > rendu final : localstorage
+# MyFitBook
 
-deuxième rendu :
-style de l'appli fini
-créer une séance
-historique de séance
-créer un programme avec des séances dedans
-Chrono dès début de sance quand on execute un programme
-Planning ? (finnalement les libs sont trop complexe pour pas grand choses)
+Application Android réalisé solo pour un projet scolaire en React Native sur une période de 1 mois
+Thème de l'application et objectifs défini par l'élève puis vérifier par l'intervenant
 
-En plus :
-Barre de recherche pour rechercher un exercice pour ajout dans une séance
-Barre de recherche pour rechercher et voir un exercice pour ajout dans une séance
-Intéraction avec Api de Citation Fitness
-Création d'une mini api avec mockupApi car pas d'api gratuite en Fr
+> MyFitBook vous permettra de vous motiver, calculer votre imc , créer vos séance et les sauvegarder dans une interface simple et plaisante
+
+### A évaluer sur android
+
+|                                       | Premier rendu | Deuxieme rendu              |
+| ------------------------------------- | ------------- | --------------------------- |
+| Style de l'appli                      | partiel       | 👌🏻 complet                  |
+| liste d'exercices via api             | 👌🏻            | 👌🏻                          |
+| consulter un exercice                 | 👌🏻            | 👌🏻                          |
+| Calcul de l'imc                       | 👌🏻            | 👌🏻 _ stockage dans le tel _ |
+| créer une séance                      |               | 👌🏻                          |
+| historique de séance                  |               | 👌🏻 _stockage tel_           |
+| temps d'une séance                    |               | 👌🏻                          |
+| barre de recherche des exos (_Bonus_) |               | 👌🏻                          |
+| Citation fitness par Api (_Bonus_)    | 👌🏻            | 👌🏻                          |
