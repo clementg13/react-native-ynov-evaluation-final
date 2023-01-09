@@ -1,4 +1,4 @@
-A évaluer sur ANDROID (apple trop cher)
+A évaluer sur ANDROID
 premier rendu :
 style de l'application { react navigation header et bottom header }
 liste des exercices {axios}
@@ -10,7 +10,9 @@ poffinage style
 créer une séance
 historique de séance
 créer un programme avec des séances dedans
-?chrono quand on execute un programme
-?peut être planning
+Chrono dès début de sance quand on execute un programme
+Planning ? (peut être)
 stat en fin de séance
 
+Bonus :
+Intéraction avec Api de Citation Fitness
