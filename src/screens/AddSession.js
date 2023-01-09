@@ -132,7 +132,7 @@ const AddSession = () => {
       } else {
         let tempExercises = exercises;
         tempExercises.push(chronometre);
-        AsyncStorage.setItem('@Sessions', JSON.stringify(tempExercises)).then(
+        AsyncStorage.setItem('@Sessions', JSON.stringify([tempExercises])).then(
           () => {
             navigation.navigate('ExercicesHistory');
           },

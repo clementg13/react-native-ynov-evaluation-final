@@ -1,6 +1,7 @@
 import {View, Text} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useCallback, useEffect} from 'react';
+import styled from 'styled-components';
 
 export default function ExercicesHistory() {
   const [sessions, setSessions] = React.useState([]);
@@ -22,12 +23,17 @@ export default function ExercicesHistory() {
     <View>
       <Text>Historique De Séances</Text>
       {sessions.map((session, index) => {
-        console.log(session);
+        let time = session.find(x => x?.id === 'chronometre');
+        let tempSession = session.filter(obj => obj.id !== 'chronometre');
         return (
-          <View key={index}>
-            {session.map((exercise, idx) => {
+          <Session key={index}>
+            <Text>
+              Temps: {time.minutes}:{time.seconds}min
+            </Text>
+            {tempSession.map((exercise, idx) => {
+              console.log('aie', exercise);
               return (
-                <View key={idx}>
+                <Exercice key={idx}>
                   <Text>{exercise.title}</Text>
                   {exercise.series.map((serie, i) => {
                     return (
@@ -37,12 +43,22 @@ export default function ExercicesHistory() {
                       </View>
                     );
                   })}
-                </View>
+                </Exercice>
               );
             })}
-          </View>
+          </Session>
         );
       })}
     </View>
   );
 }
+
+let Session = styled.View`
+  border: 1px solid black;
+  padding: 5px;
+`;
+
+let Exercice = styled.View`
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 5px;
+`;
