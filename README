@@ -11,8 +11,10 @@ créer une séance
 historique de séance
 créer un programme avec des séances dedans
 Chrono dès début de sance quand on execute un programme
-Planning ? (peut être)
+Planning ? (finnalement les libs sont trop complexe pour pas grand choses)
 
 En plus :
+Barre de recherche pour rechercher un exercice pour ajout dans une séance
+Barre de recherche pour rechercher et voir un exercice pour ajout dans une séance
 Intéraction avec Api de Citation Fitness
 Création d'une mini api avec mockupApi car pas d'api gratuite en Fr
