@@ -3,16 +3,16 @@ premier rendu :
 style de l'application { react navigation header et bottom header }
 liste des exercices {axios}
 consulter un exercice {axios}
-Mensuration, calcul IMC {localstorage}
+Mensuration, calcul IMC > rendu final : localstorage
 
 deuxième rendu :
-poffinage style
+style de l'appli fini
 créer une séance
 historique de séance
 créer un programme avec des séances dedans
 Chrono dès début de sance quand on execute un programme
 Planning ? (peut être)
-stat en fin de séance
 
-Bonus :
+En plus :
 Intéraction avec Api de Citation Fitness
+Création d'une mini api avec mockupApi car pas d'api gratuite en Fr

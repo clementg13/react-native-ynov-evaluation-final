@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useCallback, useEffect} from 'react';
 import styled from 'styled-components';
@@ -20,8 +20,8 @@ export default function ExercicesHistory() {
   }, [getSessions]);
 
   return (
-    <View>
-      <Text>Historique De Séances</Text>
+    <Scroll>
+      <Title>Historique De Séances</Title>
       {sessions.map((session, index) => {
         let time = session.find(x => x?.id === 'chronometre');
         let tempSession = session.filter(obj => obj.id !== 'chronometre');
@@ -34,13 +34,13 @@ export default function ExercicesHistory() {
               console.log('aie', exercise);
               return (
                 <Exercice key={idx}>
-                  <Text>{exercise.title}</Text>
+                  <Text>{exercise.title} :</Text>
                   {exercise.series.map((serie, i) => {
                     return (
-                      <View key={i}>
+                      <Exercice key={i}>
                         <Text>{serie.reps} Répétitions</Text>
                         <Text>{serie.weight} Kg</Text>
-                      </View>
+                      </Exercice>
                     );
                   })}
                 </Exercice>
@@ -49,16 +49,36 @@ export default function ExercicesHistory() {
           </Session>
         );
       })}
-    </View>
+    </Scroll>
   );
 }
 
-let Session = styled.View`
-  border: 1px solid black;
+let Scroll = styled.ScrollView`
   padding: 5px;
+  height: 400px;
+`;
+
+let Title = styled.Text`
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+`;
+
+let Text = styled.Text`
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
+`;
+
+let Session = styled.View`
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 15px;
 `;
 
 let Exercice = styled.View`
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 5px;
 `;
