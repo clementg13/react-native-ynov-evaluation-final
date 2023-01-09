@@ -18,12 +18,12 @@ const Exercise = ({route}) => {
               let equipementsArray = [];
               exerciseInfo?.equipement?.map((element, index) => {
                 equipementsArray.push(
-                  <Text key={index}> {String(element)} </Text>,
+                  <Element key={index}> {String(element)} </Element>,
                 );
               });
               return equipementsArray;
             } else {
-              return <Text> Aucune équipement renseigné </Text>;
+              return <Element> Aucune équipement renseigné </Element>;
             }
           })()}
         </Description>
@@ -33,14 +33,17 @@ const Exercise = ({route}) => {
             if (Array.isArray(exerciseInfo?.cible)) {
               let ciblesArray = [];
               exerciseInfo?.cible?.map((element, index) => {
-                ciblesArray.push(<Text key={index}> {String(element)} </Text>);
+                ciblesArray.push(
+                  <Element key={index}> {String(element)} </Element>,
+                );
               });
               return ciblesArray;
             } else {
-              return <Text> Aucune cibles renseigné </Text>;
+              return <Element> Aucune cibles renseigné </Element>;
             }
           })()}
         </Description>
+        <Description>Description: {exerciseInfo?.description}</Description>
       </View>
     </Body>
   );
@@ -54,6 +57,15 @@ const Title = styled.Text`
   font-size: 20px;
   font-weight: bold;
   color: #000;
+`;
+
+const Element = styled.Text`
+  background-color: #154c79;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  margin-left: 5px;
+  margin-left: 5px;
 `;
 
 const Image = styled.Image`

@@ -1,6 +1,8 @@
 import {View, Text, TextInput, Button} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useEffect, useRef} from 'react';
 import {AutocompleteDropdown} from 'react-native-autocomplete-dropdown';
+import {useNavigation} from '@react-navigation/native';
 import {StyleSheet} from 'react-native';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -11,9 +13,11 @@ const AddSession = () => {
   const [chronometre, setChronometre] = React.useState({
     minutes: 0,
     seconds: 0,
+    id: 'chronometre',
   });
   const refDropDownController = useRef(null);
   const [dropdownLoading, setDropdownLoading] = React.useState(true);
+  const navigation = useNavigation();
 
   const addExerciseToSession = item => {
     setExercises([...exercises, item]);
@@ -95,9 +99,14 @@ const AddSession = () => {
     const interval = setInterval(() => {
       setChronometre(prevChronometre => {
         if (prevChronometre.seconds === 59) {
-          return {minutes: prevChronometre.minutes + 1, seconds: 0};
+          return {
+            id: 'chronometre',
+            minutes: prevChronometre.minutes + 1,
+            seconds: 0,
+          };
         }
         return {
+          id: 'chronometre',
           minutes: prevChronometre.minutes,
           seconds: prevChronometre.seconds + 1,
         };
@@ -105,6 +114,34 @@ const AddSession = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  const storeSession = async () => {
+    try {
+      let AsyncSession = await AsyncStorage.getItem('@Sessions');
+      if (AsyncSession) {
+        AsyncSession = JSON.parse(AsyncSession);
+        let tempExercises = exercises;
+        tempExercises.push(chronometre);
+        AsyncSession.push(tempExercises);
+        await AsyncStorage.setItem(
+          '@Sessions',
+          JSON.stringify(AsyncSession),
+        ).then(() => {
+          navigation.navigate('ExercicesHistory');
+        });
+      } else {
+        let tempExercises = exercises;
+        tempExercises.push(chronometre);
+        AsyncStorage.setItem('@Sessions', JSON.stringify(tempExercises)).then(
+          () => {
+            navigation.navigate('ExercicesHistory');
+          },
+        );
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <Body>
@@ -124,7 +161,7 @@ const AddSession = () => {
           {exercises.map((exercise, index) => {
             return (
               <View key={index}>
-                <Text>{exercise?.title}</Text>
+                <ExerciseTitle>{exercise?.title}</ExerciseTitle>
                 <Button
                   title="+"
                   onPress={() => {
@@ -134,24 +171,26 @@ const AddSession = () => {
                 {exercise?.series?.map((serie, idx) => {
                   return (
                     <View key={serie.id}>
-                      <TextInput
-                        onChangeText={text => {
-                          modifyRepsOrWeigth(exercise?.id, serie?.id, {
-                            reps: text,
-                          });
-                        }}
-                        value={serie.reps}
-                      />
-                      <TextInput
-                        onChangeText={text => {
-                          modifyRepsOrWeigth(exercise?.id, serie?.id, {
-                            weight: text,
-                          });
-                        }}
-                        value={serie.weight}
-                      />
+                      <FlexTwoColumn>
+                        <FlexTextInput
+                          onChangeText={text => {
+                            modifyRepsOrWeigth(exercise?.id, serie?.id, {
+                              reps: text,
+                            });
+                          }}
+                          value={serie.reps}
+                        />
+                        <FlexTextInput
+                          onChangeText={text => {
+                            modifyRepsOrWeigth(exercise?.id, serie?.id, {
+                              weight: text,
+                            });
+                          }}
+                          value={serie.weight}
+                        />
+                      </FlexTwoColumn>
                       <Text>
-                        {serie.reps} {serie.weight}
+                        {serie.reps} Répétitions à {serie.weight} Kg
                       </Text>
                       <Button
                         title="-"
@@ -171,6 +210,12 @@ const AddSession = () => {
             Chronomètre: {chronometre.minutes}:{chronometre.seconds}
           </Text>
         </View>
+        <Button
+          title="Sauvegarder la séance"
+          onPress={() => {
+            storeSession();
+          }}
+        />
       </View>
     </Body>
   );
@@ -189,6 +234,22 @@ const styles = StyleSheet.create({
 
 const Body = styled.View`
   margin: 0px 12px;
+`;
+
+const ExerciseTitle = styled.Text`
+  font-size: 20px;
+  font-weight: bold;
+`;
+
+const FlexTwoColumn = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 10px;
+`;
+
+const FlexTextInput = styled.TextInput`
+  flex: 1;
+  border: 1px solid black;
 `;
 
 const Scroll = styled.ScrollView`

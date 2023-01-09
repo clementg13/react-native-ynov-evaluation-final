@@ -1,7 +1,6 @@
 import {ScrollView} from 'react-native';
 import React from 'react';
 import styled from 'styled-components/native';
-import * as Styles from '../components/styled/Styled';
 import workoutImage from '../assets/images/bench-press.png';
 import mensurationImage from '../assets/images/metre.png';
 import workoutMenImage from '../assets/images/workoutMen.png';
@@ -28,7 +27,7 @@ const LongCardWithImage = [
 ];
 const Home = () => {
   return (
-    <Styles.Body>
+    <Body>
       <ScrollView
         contentContainerStyle={{paddingBottom: 70}}
         showsVerticalScrollIndicator={false}>
@@ -62,10 +61,10 @@ const Home = () => {
               <Card
                 customHeight={200}
                 backgroundColor="#fcf1fa"
-                NavigationRoute="Mensurations"
+                NavigationRoute="ExercicesHistory"
                 backgroundImageColor="#f6dddf"
                 cardImage={workoutMenImage}
-                Title="Historique d'Exercices"
+                Title="Historique de Séances"
               />
               <Card
                 backgroundColor="#f4f6f6"
@@ -102,9 +101,13 @@ const Home = () => {
           <Citation />
         </TopSpacedContainer>
       </ScrollView>
-    </Styles.Body>
+    </Body>
   );
 };
+
+const Body = styled.View`
+  margin: 0px 12px;
+`;
 
 const LongCardContainer = styled.View`
   margin-left: ${props => {

@@ -7,6 +7,7 @@ import Planning from '../screens/Planning';
 import AddSession from '../screens/AddSession';
 import Exercises from '../screens/Exercises.js';
 import Exercise from '../screens/Exercise.js';
+import ExercicesHistory from '../screens/ExercisesHistory.js';
 
 import HeaderProfilePicture from '../components/headers/HeaderProfilePicture';
 import HeaderTitleCustom from '../components/headers/HeaderTitleCustom';
@@ -67,6 +68,14 @@ const HomeStack = () => {
       <Stack.Screen
         name="Exercise"
         component={Exercise}
+        options={{
+          headerTitle: () => '',
+          headerRight: () => <HeaderTitleCustom Title="Les Exercices" />,
+        }}
+      />
+      <Stack.Screen
+        name="ExercicesHistory"
+        component={ExercicesHistory}
         options={{
           headerTitle: () => '',
           headerRight: () => <HeaderTitleCustom Title="Les Exercices" />,

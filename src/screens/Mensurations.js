@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useEffect, useCallback} from 'react';
 import styled from 'styled-components';
-import * as Styles from '../components/styled/Styled';
 import {Picker} from '@react-native-picker/picker';
 
 const Mensurations = () => {
@@ -76,8 +75,6 @@ const Mensurations = () => {
     [age, height, sexe, weight],
   );
 
-  [1, 2];
-
   const getIMC = useCallback(async () => {
     let imcData = await AsyncStorage.getItem('@IMC');
     if (imcData) {
@@ -98,7 +95,7 @@ const Mensurations = () => {
   }, []);
 
   return (
-    <Styles.Body>
+    <Body>
       <Title>Votre IMC</Title>
 
       <FormGroup>
@@ -151,9 +148,13 @@ const Mensurations = () => {
       </FormGroup>
       <Title>Votre I.M.C : {imc?.toFixed(2)}</Title>
       <Title>{imcText}</Title>
-    </Styles.Body>
+    </Body>
   );
 };
+
+const Body = styled.View`
+  margin: 0px 12px;
+`;
 
 const Title = styled.Text`
   font-size: 25px;
