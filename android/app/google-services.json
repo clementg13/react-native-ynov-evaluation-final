@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "924646996538",
+    "project_id": "myfitbook-reactnative",
+    "storage_bucket": "myfitbook-reactnative.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924646996538:android:2df1360701d0b1ea1f1303",
+        "android_client_info": {
+          "package_name": "com.myfitbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "924646996538-s63mkhu33ihuflq8b4sds1b8npjn5kep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCN3L1K6ARcCQV7bvOUtqGD0ZOwWPr_PYA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "924646996538-s63mkhu33ihuflq8b4sds1b8npjn5kep.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
