@@ -48,28 +48,6 @@ const Routes = props => {
               ),
             }}
           />
-          {/* <Tab.Screen
-            name="Add"
-            options={{
-              tabBarLabel: '',
-              tabBarIcon: ({color}) => (
-                <View
-                  style={{
-                    position: 'absolute',
-                    bottom: 0, // space from bottombar
-                    height: 48,
-                    width: 48,
-                    borderRadius: 68,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: '#20252e',
-                  }}>
-                  <MaterialCommunityIcons name="plus" color={color} size={36} />
-                </View>
-              ),
-            }}
-            component={HomeStack}
-          /> */}
           <Tab.Screen
             name="AddSession"
             component={AddSession}

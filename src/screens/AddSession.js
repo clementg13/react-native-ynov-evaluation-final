@@ -1,4 +1,4 @@
-import {View, Text, TextInput, Button} from 'react-native';
+import {View, Text, Button} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useEffect, useRef} from 'react';
 import {AutocompleteDropdown} from 'react-native-autocomplete-dropdown';
